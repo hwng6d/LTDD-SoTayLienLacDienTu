@@ -1,0 +1,53 @@
+<resources>
+    <!-- MainActivity -->
+    <string name="app_name">STLLDT</string>
+    <string name="app_name_vn">Sổ tay liên lạc điện tử</string>
+    <string name="actvRole_hint">Chọn chức vụ</string>
+    <string name="tilEmail_hint">Nhập email</string>
+    <string name="tilPassword_hint">Nhập mật khẩu</string>
+    <string name="cbRememberMe_hint">Nhớ thông tin đã nhập</string>
+    <string name="btLogin">Đăng nhập</string>
+    <string name="tvLogup">Đăng ký</string>
+    <string name="etEmail_hint">Nhập email</string>
+    <string name="etPassword_hint">Nhập mật khẩu</string>
+    <string name="btLogup">Đăng ký</string>
+    <string name="tvLogin">Đăng nhập</string>
+
+    <!-- HomeSVActivity -->
+    <string name="imgSVDescription">Hình sinh viên</string>
+    <string name="tvGreet">Xin chào, </string>
+    <string name="tvEditProfile">Sửa thông tin…</string>
+    <string name="tvDashboard">Dashboard</string>
+    <string name="tvSinhVien">Sinh viên</string>
+    <string name="tvGrade">Xem điểm</string>
+    <string name="tvFee">Học phí</string>
+    <string name="tvTimeTable">Lịch học</string>
+    <string name="tvCourse">DS môn học</string>
+    <string name="tvNoti">Thông báo</string>
+    <string name="tvLogout">Đăng xuất</string>
+    <string name="imgGradeDescription">Hình sinh viên</string>
+    <string name="imgFeeDescription">Hình sinh viên</string>
+    <string name="imgTimeTableDescription">Hình sinh viên</string>
+    <string name="imgCourseDescription">Hình sinh viên</string>
+    <string name="imgNotiDescription">Hình sinh viên</string>
+    <string name="imgLogoutDescription">Hình sinh viên</string>
+    <string name="tvListCourses">Danh sách môn học</string>
+
+    <!-- HomePHActivity -->
+    <string name="tvGreet1">Phụ huynh của: </string>
+
+    <!-- HomeADActivity -->
+    <string name="tvSeeStudentList">Xem DS sinh viên</string>
+    <string name="tvSeeParentList">Xem DS phụ huynh</string>
+    <string name="tvManageNoti">Quản lý thông báo</string>
+    <string name="tvManageCourse">Quản lý MH</string>
+    <string name="tvAdmin">Quản trị</string>
+
+    <string-array name="roles">
+        <item>Sinh viên</item>
+        <item>Phụ huynh</item>
+        <item>Quản trị viên</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

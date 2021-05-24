@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomePHActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgparent"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="90dp"
+                android:fontFamily="@font/baloo"
+                android:layout_marginEnd="27dp"
+                android:text="Dashboard"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toStartOf="@+id/imgparent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:text="Phụ huynh"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+            <RelativeLayout
+                android:id="@+id/rlGreet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="20dp" android:layout_marginRight="20dp"
+                app:layout_constraintTop_toBottomOf="@id/imgparent">
+                <RelativeLayout
+                    android:id="@+id/rlGreet1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvGreet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/baloo"
+                        android:paddingStart="16dp"
+                        android:text="@string/tvGreet"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tvEditProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingEnd="8dp"
+                        android:text="@string/tvEditProfile"
+                        android:textStyle="bold"
+                        android:textSize="10sp"
+                        android:textColor="#0521B0"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvGreet1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tvGreet1"
+                    android:layout_below="@+id/rlGreet1"
+                    android:fontFamily="@font/baloo"
+                    android:textSize="14sp"
+                    android:paddingStart="16dp"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="175dp"
+                android:orientation="horizontal"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rlGreet">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imageView2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/tvGrade"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="18dp"
+                            app:srcCompat="@drawable/grade" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imageView3"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/tvFee"
+                            android:textSize="16sp"
+                            tools:text="Học phí" />
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="18dp"
+                            android:src="@drawable/fee"/>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="175dp"
+                android:orientation="horizontal"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imageView4"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/tvTimeTable"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="18dp"
+                            app:srcCompat="@drawable/calendar" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imageView5"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/tvLogout"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="18dp"
+                            app:srcCompat="@drawable/logout" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>
