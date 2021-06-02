@@ -12,6 +12,7 @@
     <string name="etPassword_hint">Nhập mật khẩu</string>
     <string name="btLogup">Đăng ký</string>
     <string name="tvLogin">Đăng nhập</string>
+    <string name="tvLoading">Đang tải…</string>
 
     <!-- HomeSVActivity -->
     <string name="imgSVDescription">Hình sinh viên</string>
@@ -31,10 +32,13 @@
     <string name="imgCourseDescription">Hình sinh viên</string>
     <string name="imgNotiDescription">Hình sinh viên</string>
     <string name="imgLogoutDescription">Hình sinh viên</string>
+
+    <!-- DSMonHocActivity -->
     <string name="tvListCourses">Danh sách môn học</string>
 
     <!-- HomePHActivity -->
     <string name="tvGreet1">Phụ huynh của: </string>
+    <string name="tvPhuHuynh">Phụ huynh</string>
 
     <!-- HomeADActivity -->
     <string name="tvSeeStudentList">Xem DS sinh viên</string>
@@ -42,6 +46,75 @@
     <string name="tvManageNoti">Quản lý thông báo</string>
     <string name="tvManageCourse">Quản lý MH</string>
     <string name="tvAdmin">Quản trị</string>
+
+    <!-- ChiTietMHFragment -->
+    <string name="tvCourseName">Tên môn học</string>
+    <string name="tvCourseId">Mã môn học</string>
+    <string name="tvCourseCredits">Số tín chỉ</string>
+    <string name="tvCourseFaculty">Khoa</string>
+    <string name="tvCourseSpecilization">Chuyên ngành</string>
+    <string name="tvCourseTimeTable">Lịch học</string>
+    <string name="tvCourseStartDate">Ngày bắt đầu</string>
+    <string name="tvCourseEndDate">Ngày kết thúc</string>
+    <string name="tvCourseFee">Học phí</string>
+
+    <!-- DiemMonHocActivity -->
+    <string name="tvListPoints">Điểm môn học</string>
+
+    <!-- DiemMHFragment -->
+    <string name="tvMidSemPoint">Điểm giữa kỳ</string>
+    <string name="tvEndSemPoint">Điểm cuối kỳ</string>
+    <string name="tvOverallPoint">Trung bình</string>
+
+    <!-- LichHocActivity -->
+    <string name="tvLichHoc">Lịch học</string>
+
+    <!-- HocPhiActivity -->
+    <string name="tvSumOfFee">Tổng học phí</string>
+
+    <!-- DSSinhVienActivity -->
+    <string name="tvListStudents">Danh sách sinh viên</string>
+
+    <!-- DSPhuHuynhActivity -->
+    <string name="tvListParents">Danh sách phụ huynh</string>
+
+    <!-- ChiTietSVFragment -->
+    <string name="tvStudentUid">Mã sinh viên</string>
+    <string name="tvStudentEmail">Email</string>
+    <string name="tvStudentGender">Giới tính</string>
+    <string name="tvStudentSchool">Trường</string>
+
+    <!-- ChiTietPHFragment -->
+    <string name="tvParentName">Tên phụ huynh</string>
+    <string name="tvParentUid">Mã phụ huynh</string>
+    <string name="tvParentEmail">Email</string>
+    <string name="tvParentGender">Giới tính</string>
+    <string name="tvParentStudentName">Phụ huynh của</string>
+    <string name="tvParentStudentUid">Mã sinh viên</string>
+
+    <!-- DSNotiADActivity -->
+    <string name="tvListNoti">Danh sách thông báo</string>
+    <string name="tvReload">Load lại</string>
+
+    <!-- ChiTietTBADFragment -->
+    <string name="tvNotiId">Mã thông báo</string>
+    <string name="tvNotiName">Tên thông báo</string>
+    <string name="tvNotiContent">Nội dung</string>
+    <string name="tvNotiDate">Ngày thông báo</string>
+
+    <!-- AddNotiDialog -->
+    <string name="tvAddNoti">Thêm thông báo</string>
+    <string name="tvHintNotiName">Nhập tên thông báo</string>
+    <string name="tvHintNotiContent">Nhập nội dung</string>
+    <string name="btCancel">Hủy</string>
+    <string name="btAdd">Thêm</string>
+    <string name="tvHintCourseName">Chọn tên môn học</string>
+
+    <!-- EditCourseDialog -->
+    <string name="tvEditCourse">Sửa thông tin môn học</string>
+    <string name="tvHintCourseTimeTable">Nhập lịch học</string>
+    <string name="btEdit">Sửa</string>
+    <string name="tvRemindEditCourseTimeTable">Nhập theo mẫu: "Tiết [x], [y] tiết, thứ [z]".</string>
 
     <string-array name="roles">
         <item>Sinh viên</item>

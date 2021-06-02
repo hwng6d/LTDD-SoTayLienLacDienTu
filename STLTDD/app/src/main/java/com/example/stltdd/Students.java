@@ -1,7 +1,7 @@
 package com.example.stltdd;
 
 public class Students {
-    private String student_id;
+    private String userId;
     private String email;
     private String name;
     private String school;
@@ -11,8 +11,8 @@ public class Students {
     public Students() {
     }
 
-    public Students(String student_id, String email, String name, String school, String gender, String role) {
-        this.student_id = student_id;
+    public Students(String userId, String email, String name, String school, String gender, String role) {
+        this.userId = userId;
         this.email = email;
         this.name = name;
         this.school = school;
@@ -20,12 +20,12 @@ public class Students {
         this.role = role;
     }
 
-    public String getStudent_id() {
-        return student_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setStudent_id(String student_id) {
-        this.student_id = student_id;
+    public void setUserId(String student_id) {
+        this.userId = student_id;
     }
 
     public String getEmail() {

@@ -11,12 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.STLTDD">
-        <activity android:name=".DSMonHocActivity"
-            android:parentActivityName=".HomeSVActivity"></activity>
+        <activity android:name=".DSNotiActivity"></activity>
+        <activity android:name=".DSMonHocADActivity" />
+        <activity android:name=".DSNotiADActivity" />
+        <activity android:name=".DSPhuHuynhActivity" />
+        <activity android:name=".DSSinhVienActivity" />
+        <activity android:name=".HocPhiActivity" />
+        <activity android:name=".LichHocActivity" />
+        <activity android:name=".DiemMonHocActivity" />
+        <activity
+            android:name=".DSMonHocActivity"
+            android:parentActivityName=".HomeSVActivity" />
         <activity android:name=".HomeADActivity" />
         <activity android:name=".HomePHActivity" />
         <activity android:name=".HomeSVActivity" />
-        <activity android:name=".LogupActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

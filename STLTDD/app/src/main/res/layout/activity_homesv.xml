@@ -49,7 +49,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/textView"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
             <RelativeLayout
                 android:id="@+id/rlGreet"
@@ -71,17 +71,6 @@
                     android:text="@string/tvGreet"
                     android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/tvEditProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:paddingEnd="8dp"
-                    android:text="@string/tvEditProfile"
-                    android:textColor="#0521B0"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
             </RelativeLayout>
 
             <LinearLayout
@@ -94,6 +83,7 @@
                 app:layout_constraintTop_toBottomOf="@id/rlGreet">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPoint"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"
@@ -130,6 +120,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvFee"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
@@ -178,6 +169,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvTimeTable"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"

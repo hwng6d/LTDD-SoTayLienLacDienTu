@@ -69,17 +69,16 @@ public class DSMonHocActivity extends AppCompatActivity {
 }
 
 */
-
 package com.example.stltdd;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
-
+import android.view.View;
+import android.widget.ImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -88,22 +87,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DSMonHocActivity extends AppCompatActivity {
     //initialize
+    ImageView imgBack;
     RecyclerView rcvCourses;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReferenceSVCourses;
     DatabaseReference databaseReferenceCourses;
     SV_CoursesAdapter svcoursesAdapter;
     CoursesAdapter coursesAdapter;
-    ArrayList<SV_Courses> listsvcourses;
-    ArrayList<Courses> listcourses;
+    ArrayList<SV_Courses> listsvcoursesForadpt;
+    ArrayList<Courses> listcoursesForadpt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,45 +108,45 @@ public class DSMonHocActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dsmonhoc);
 
         //assign
+        imgBack = findViewById(R.id.imgBack);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         rcvCourses = findViewById(R.id.rcvCourses);
         rcvCourses.setHasFixedSize(true);
         rcvCourses.setLayoutManager(new LinearLayoutManager(this));
         databaseReferenceSVCourses = FirebaseDatabase.getInstance().getReference("SV_Courses").child(firebaseUser.getUid());
-
         databaseReferenceCourses = FirebaseDatabase.getInstance().getReference("Courses");
 
-        listsvcourses = new ArrayList<>();
-        listcourses = new ArrayList<>();
-        svcoursesAdapter = new SV_CoursesAdapter(this,listsvcourses);
-        coursesAdapter = new CoursesAdapter(this,listcourses);
-        rcvCourses.setAdapter(svcoursesAdapter);
+        listsvcoursesForadpt = new ArrayList<>();
+        listcoursesForadpt = new ArrayList<>();
+        svcoursesAdapter = new SV_CoursesAdapter(this,listsvcoursesForadpt);
+        coursesAdapter = new CoursesAdapter(this,listcoursesForadpt);
+        rcvCourses.setAdapter(coursesAdapter);
 
-        /*databaseReferenceSVCourses.addValueEventListener(new ValueEventListener() {
+        databaseReferenceCourses.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                listsvcourses.clear();
+                listcoursesForadpt.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    SV_Courses svcourses =  dataSnapshot.getValue(SV_Courses.class);
-                    String each_course_id = svcourses.getCourse_id();
-                    listsvcourses.add(svcourses);
-                    databaseReferenceCourses = FirebaseDatabase.getInstance().getReference("Courses");
-                    Query query = databaseReferenceCourses.orderByChild("course_id").equalTo(each_course_id);
+                    Courses course =  dataSnapshot.getValue(Courses.class);
+                    //listcoursesForadpt.add(course);
+                    String each_course_id = course.getCourse_id();
+                    //Log.d("kiemtra id tat ca: ",each_course_id);
+                    coursesAdapter.notifyDataSetChanged();
+                    //databaseReferenceSVCourses = FirebaseDatabase.getInstance().getReference("SV_Courses").child(firebaseUser.getUid());;
+                    Query query = databaseReferenceSVCourses.orderByChild("course_id").equalTo(each_course_id);
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                            listcourses.clear();
-                            svcoursesAdapter.notifyDataSetChanged();
+                            //listcoursesForadpt.add(course);
+                            listsvcoursesForadpt.clear();
                             //Log.d("kiemtranema id ",each_course_id);
                             for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
-                                Courses course = dataSnapshot1.getValue(Courses.class);
-                                String each_course_name = course.getName();
-                                svcourses.setCourse_id(each_course_id);
-
-                                //listcourses.add(course);
-
                                 //svcoursesAdapter.notifyDataSetChanged();
-                                //coursesAdapter.notifyDataSetChanged();
+                                SV_Courses svcourse = dataSnapshot1.getValue(SV_Courses.class);
+                                course.setCourse_id(svcourse.getCourse_id());
+                                listcoursesForadpt.add(course);
+                                coursesAdapter.notifyDataSetChanged();
+
                             }
                         }
                         @Override
@@ -161,28 +158,13 @@ public class DSMonHocActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
             }
-        });*/
-
-        /*String courses_id[] = new String[0];
-        databaseReferenceSVCourses.addValueEventListener(new ValueEventListener() {
+        });
+        imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                listsvcourses.clear();
-                int dem = 0;
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    SV_Courses svCourses = dataSnapshot.getValue(SV_Courses.class);
-                    courses_id[dem] = svCourses.getUserId();
-                    Log.d("kiemtra id: ",courses_id[dem]);
-                    dem++;
-                }
+            public void onClick(View v) {
+                DSMonHocActivity.this.onBackPressed();
             }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });*/
-
+        });
     }
 }

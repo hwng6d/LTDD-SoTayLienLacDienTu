@@ -81,6 +81,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rlGreet">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvStudentsList"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -101,6 +102,8 @@
                             android:layout_below="@id/imageView2"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="12dp"
+                            android:layout_marginHorizontal="24dp"
+                            android:gravity="center"
                             android:fontFamily="sans-serif-black"
                             android:text="@string/tvSeeStudentList"
                             android:textSize="16sp" />
@@ -117,6 +120,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvParentsList"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -137,6 +141,8 @@
                             android:layout_below="@id/imageView3"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="12dp"
+                            android:layout_marginHorizontal="24dp"
+                            android:gravity="center"
                             android:fontFamily="sans-serif-black"
                             android:text="@string/tvSeeParentList"
                             android:textSize="16sp"/>
@@ -163,6 +169,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvManageNoti"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -183,6 +190,8 @@
                             android:layout_below="@id/imageView4"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="12dp"
+                            android:layout_marginHorizontal="24dp"
+                            android:gravity="center"
                             android:fontFamily="sans-serif-black"
                             android:text="@string/tvManageNoti"
                             android:textSize="16sp" />
@@ -199,6 +208,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvManageCourse"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -219,6 +229,8 @@
                             android:layout_below="@id/imageView5"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="12dp"
+                            android:layout_marginHorizontal="24dp"
+                            android:gravity="center"
                             android:fontFamily="sans-serif-black"
                             android:text="@string/tvManageCourse"
                             android:textSize="16sp" />
@@ -245,7 +257,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cvNoti"
+                    android:id="@+id/cvLogout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -266,6 +278,8 @@
                             android:layout_below="@id/imageView8"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="2dp"
+                            android:layout_marginHorizontal="24dp"
+                            android:gravity="center"
                             android:fontFamily="sans-serif-black"
                             android:text="@string/tvLogout"
                             android:textSize="16sp"/>

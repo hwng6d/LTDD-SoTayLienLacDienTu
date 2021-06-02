@@ -3,7 +3,7 @@ package com.example.stltdd;
 public class Courses {
     private String name;
     private String course_id;
-    private String falcuty;
+    private String faculty;
     private String specilization;
     private String timetable;
     private String startdate;
@@ -14,10 +14,10 @@ public class Courses {
     public Courses() {
     }
 
-    public Courses(String name, String course_id, String falcuty, String specilization, String timetable, String startdate, String enddate, int credits, int fee) {
+    public Courses(String name, String course_id, String faculty, String specilization, String timetable, String startdate, String enddate, int credits, int fee) {
         this.name = name;
         this.course_id = course_id;
-        this.falcuty = falcuty;
+        this.faculty = faculty;
         this.specilization = specilization;
         this.timetable = timetable;
         this.startdate = startdate;
@@ -42,12 +42,12 @@ public class Courses {
         this.course_id = course_id;
     }
 
-    public String getFalcuty() {
-        return falcuty;
+    public String getFaculty() {
+        return faculty;
     }
 
     public void setFalcuty(String falcuty) {
-        this.falcuty = falcuty;
+        this.faculty = falcuty;
     }
 
     public String getSpecilization() {

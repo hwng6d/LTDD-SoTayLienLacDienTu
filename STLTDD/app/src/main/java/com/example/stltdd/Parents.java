@@ -1,33 +1,33 @@
 package com.example.stltdd;
 
 public class Parents {
-    private String parent_id;
+    private String userId;
     private String name;
     private String email;
     private String gender;
-    private String student_id;
+    private String student_userId;
     private String student_name;
     private String role;
 
     public Parents() {
     }
 
-    public Parents(String parent_id, String name, String email, String gender, String student_id, String student_name, String role) {
-        this.parent_id = parent_id;
+    public Parents(String userId, String name, String email, String gender, String student_userId, String student_name, String role) {
+        this.userId = userId;
         this.name = name;
         this.email = email;
         this.gender = gender;
-        this.student_id = student_id;
+        this.student_userId = student_userId;
         this.student_name = student_name;
         this.role = role;
     }
 
-    public String getParent_id() {
-        return parent_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setParent_id(String parent_id) {
-        this.parent_id = parent_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -54,12 +54,12 @@ public class Parents {
         this.gender = gender;
     }
 
-    public String getStudent_id() {
-        return student_id;
+    public String getStudent_userId() {
+        return student_userId;
     }
 
-    public void setStudent_id(String student_id) {
-        this.student_id = student_id;
+    public void setStudent_userId(String student_userId) {
+        this.student_userId = student_userId;
     }
 
     public String getStudent_name() {

@@ -7,8 +7,8 @@
     android:fontFamily="@font/open_sans"
     android:maxLines="1"
     android:padding="14dp"
-    android:text="TextView"
+    android:text="@string/tvLoading"
     android:textAppearance="?attr/textAppearanceSubtitle1"
     android:textColor="@color/black"
     android:textSize="16sp"
-    android:textStyle="normal" />
+    android:textStyle="normal"/>

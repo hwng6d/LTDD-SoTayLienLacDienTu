@@ -3,7 +3,6 @@ package com.example.stltdd;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,11 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.TextView;
-
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -28,17 +23,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     //reference view
     AutoCompleteTextView actvRole;
     TextInputEditText metEmail, metPassword;
-    CheckBox cbRememberMe;
     Button btLogin;
     FirebaseAuth firebaseAuth;
     ConstraintLayout constraintLayout;
@@ -48,20 +41,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Code for Roles dropdown
+        //Code for Roles dropdown auto complete view
         actvRole = findViewById(R.id.actvRole);
         ArrayAdapter<CharSequence> rolesadapter = ArrayAdapter.createFromResource(this,R.array.roles,R.layout.dropdown_item_role);
         actvRole.setText(rolesadapter.getItem(0).toString(),false); //this make default value
         actvRole.setAdapter(rolesadapter);
 
         //assign variables
+        constraintLayout = findViewById(R.id.constraintLayout);
         actvRole = findViewById(R.id.actvRole);     //dropdown chức vự
         metEmail = findViewById(R.id.metEmail);
         metPassword = findViewById(R.id.metPassword);
-        cbRememberMe = findViewById(R.id.cbRememberMe);
         btLogin = findViewById(R.id.btLogin);
         firebaseAuth = FirebaseAuth.getInstance();
-        constraintLayout = findViewById(R.id.constraintLayout);
 
         //activity
         btLogin.setOnClickListener(new View.OnClickListener() {
@@ -69,18 +61,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = Objects.requireNonNull(metEmail.getText()).toString().trim();
                 String password = Objects.requireNonNull(metPassword.getText()).toString().trim();
-                if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password)) {
+                if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password)) {      //ô email và password trống
                     openSnackBar(2);
                 }
-                else if (TextUtils.isEmpty(email)) {
+                else if (TextUtils.isEmpty(email)) {        //ô email trống
                     metEmail.setError("Vui lòng điền email");
-                } else if (TextUtils.isEmpty(password)) {
+                } else if (TextUtils.isEmpty(password)) {   //ô password trống
                    openSnackBar(1);
-                } else {
+                } else {                                    //cả 2 ô đều đã nhập, chuyển sang bước xác thực và login bên dưới
                     loginToApp(email,password);
                 }
             }
-            private void openSnackBar(int count) {
+            private void openSnackBar(int count) {      //hàm gọi snackbar nếu password trống | (email, password) trống
                 Snackbar.make(constraintLayout,count == 1 ? "Vui lòng điền mật khẩu" : "Vui lòng điền email và mật khẩu",Snackbar.LENGTH_SHORT)
                         .setAction("Đóng", new View.OnClickListener() {
                             @Override
@@ -89,90 +81,90 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    String real_role = "";
     private void loginToApp(String email, String password) {
+        //login vào và xác thực actv_role có khớp với real_role ?
+        //nếu không thì out ra và hiện ra snackbar thông báo
+
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    String role_Dbcheck = actvRole.getText().toString().trim();
-                    if (role_Dbcheck.equals("Sinh viên")) {
-                        role_Dbcheck = "Students";
-                    } else if (role_Dbcheck.equals("Phụ huynh")) {
-                        role_Dbcheck = "Parents";
-                    } else {
-                        role_Dbcheck = "Admins";
-                    }
-
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(role_Dbcheck).child(Objects.requireNonNull(firebaseUser).getUid());
-                    databaseReference.addValueEventListener(new ValueEventListener() {
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+                    Query query = databaseReference.orderByChild("userId").equalTo(firebaseUser.getUid());
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                            GeneralUser gu = snapshot.getValue(GeneralUser.class);
-                            String result = gu.getRole();
-                            Log.d("kiemtraaaaaaa gu: ",result);
-
-                            String final_role = actvRole.getText().toString().trim();
-                            if (final_role.equals("Sinh viên")) {
-                                final_role = "sinhvien";
-                            } else if (final_role.equals("Phụ huynh")) {
-                                final_role = "phuhuynh";
+                            String actv_role = actvRole.getText().toString().trim();
+                            if (actv_role.equals("Sinh viên")) {
+                                actv_role = "sinhvien";
+                            } else if (actv_role.equals("Phụ huynh")) {
+                                actv_role = "phuhuynh";
                             } else {
-                                final_role = "admin";
+                                actv_role = "admin";
                             }
-                            if (final_role.equals(result)) {
-                                //đăng nhập vào role đã chọn đúng
-                                loginToRole(result);
-
-                            } else {
-                                Log.d("kiemtraaaaaaa Uid cureent: ",firebaseUser.getUid());
-                                firebaseAuth.signOut();
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                GeneralUser gu = dataSnapshot.getValue(GeneralUser.class);
+                                real_role = gu.getRole();
+                                Log.d("kiemtra role ",real_role);
+                                if (real_role.equals(actv_role)) {      //nếu đúng real_role và actv_role khớp nhau thì sẽ đăng nhập và chuyển vào màn hình đăng nhập
+                                    loginToRole(real_role);
+                                } else {                                //nếu sai thì hiện snackbar thông báo lỗi và signout ra
+                                    openSnackBar("sai thông tin đăng nhập");
+                                    firebaseAuth.signOut();
+                                }
                             }
                         }
-                        private void loginToRole(String result) {
-                            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            Intent intent = new Intent();
-                            switch (result) {
-                                case "sinhvien":
-                                    intent = new Intent(MainActivity.this, HomeSVActivity.class);
-                                    break;
-                                case "phuhuynh":
-                                    intent = new Intent(MainActivity.this, HomePHActivity.class);
-                                    break;
-                                case "admin":
-                                    intent = new Intent(MainActivity.this, HomeADActivity.class);
-                                default:
-                                    break;
-                            }
-                            startActivity(intent);
-                        }
-
                         @Override
                         public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
                         }
-                    });
-                } else {    //task is not successful
+                    }
+                    );
+                } else {
                     String errorText = Objects.requireNonNull(task.getException()).getMessage();
                     if (Objects.requireNonNull(errorText).contains("badly formatted")) {
-                        openSnackBar("sai định dạng email");
+                        openSnackBar("nhập sai định dạng email");
                     } else if (Objects.requireNonNull(errorText).contains("no user")) {
-                        openSnackBar("sai email (không có email này)");
+                        openSnackBar("nhập sai email (không có email này)");
                     } else if (Objects.requireNonNull(errorText).contains("The password is invalid")){
-                        openSnackBar("sai mật khẩu");
+                        openSnackBar("nhập sai mật khẩu");
+                    } else if (Objects.requireNonNull(errorText).contains("blocked all requested")){
+                        openSnackBar("nhập quá nhiều lần. Vui lòng chờ trong giây lát");
+                    } else if (Objects.requireNonNull(errorText).contains("network error")) {
+                        openSnackBar("không có kết nối internet");
                     } else {
                         openSnackBar(errorText);
                     }
                 }
             }
-
             private void openSnackBar(String text) {
-                Snackbar.make(constraintLayout,text.contains("sai") ? ("Bạn đã nhập " + text) : (text), Snackbar.LENGTH_SHORT)
+                Snackbar.make(constraintLayout,(text.contains("nhập") || text.contains("không")) ? ("Bạn " + text) : (text), Snackbar.LENGTH_SHORT)
                         .setAction("Đóng", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {}
                         }).show();
             }
+            private void loginToRole(String result) {           //login và chuyển vào màn hình đăng nhập
+                Intent intent = new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                switch (result) {
+                    case "sinhvien":
+                        intent = new Intent(MainActivity.this, HomeSVActivity.class);
+                        break;
+                    case "phuhuynh":
+                        intent = new Intent(MainActivity.this, HomePHActivity.class);
+                        break;
+                    case "admin":
+                        intent = new Intent(MainActivity.this, HomeADActivity.class);
+                    default:
+                        break;
+                }
+                startActivity(intent);
+            }
         });
+
     }
 }

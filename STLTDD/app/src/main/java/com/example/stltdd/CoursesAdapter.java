@@ -1,16 +1,15 @@
 package com.example.stltdd;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firebase.database.core.Context;
-
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -33,8 +32,18 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull CoursesAdapter.MyViewHolder holder, int position) {
-        Courses courses = listcourses.get(position);
-        holder.tvCourseName.setText(courses.getName());
+        Courses course = listcourses.get(position);
+        holder.tvCourseName.setText(course.getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("kiemtra adapter id khi click card xem dsmh: ",course.getCourse_id());
+                String course_id = course.getCourse_id();
+                AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
+                ChiTietMHFragment chiTietMHFragment = new ChiTietMHFragment(course_id);
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frlListCourses,chiTietMHFragment).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override

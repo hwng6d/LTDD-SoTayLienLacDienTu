@@ -1,11 +1,13 @@
 package com.example.stltdd;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -31,8 +33,8 @@ public class SV_CoursesAdapter extends RecyclerView.Adapter<SV_CoursesAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull SV_CoursesAdapter.MyViewHolder holder, int position) {
-        SV_Courses svcourses = listsvcourses.get(position);
-        holder.tvCourseName.setText(svcourses.getCourse_id());
+        SV_Courses svcourse = listsvcourses.get(position);
+        holder.tvCourseName.setText(svcourse.getCourse_id());
     }
 
     @Override
